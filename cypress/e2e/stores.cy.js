@@ -21,4 +21,8 @@ describe('Away Stores', () => {
             expect(element).to.include.text(storesData[index].address);
         })
     })
-})
+
+    it('verify arrow is animated when hovering over the box', () => {
+            cy.get('div[class*=copyContainer] div[class*=cta_iconRight]').eq(0).realHover().invoke('attr', 'class').should('contain', 'cta_lightExit');
+        })
+    })
