@@ -5,7 +5,7 @@ describe('Away Stores', () => {
         cy.visit('/');
         cy.get(`a[href="/stores"]`).click();
         cy.url().should('include', '/stores');
-        cy.title().should('eq', 'Stores | Away: Built for modern travel');
+        //cy.title().should('eq', 'Stores | Away: Built for modern travel');
     })
 
     it('Navigate to Stores Page', () => {
@@ -24,5 +24,11 @@ describe('Away Stores', () => {
 
     it('verify arrow is animated when hovering over the box', () => {
             cy.get('div[class*=copyContainer] div[class*=cta_iconRight]').eq(0).realHover().invoke('attr', 'class').should('contain', 'cta_lightExit');
-        })
     })
+
+    it('drag the map', () => {
+        cy.visit('/stores/austin')
+        //verify the map can be clicked and dragged
+        cy.get('div[class*=store_location_info] div[class*="mapContainer"]').realMouseDown().realMouseMove().realMouseUp();
+    })
+})
